@@ -28,11 +28,11 @@ function App() {
     const target = e.target as HTMLInputElement;
     const files: FileList | null = (target.files);
     if (files) {
-      if ((uploadFiles.length + files.length) > 4) {
-        // setErrorFile("Выберите не более 4х файлов");
-        return
-      }
-      // setErrorFile("");
+      // if ((uploadFiles.length + files.length) > 4) {
+      //   // setErrorFile("Выберите не более 4х файлов");
+      //   return
+      // }
+      // // setErrorFile("");
       setFilesInfo([...filesInfo, ...files])
       const fileBase64Promises = Array.from(files).map((file) => {
         const reader = new FileReader();
@@ -59,6 +59,59 @@ function App() {
   return (
     <>
       <form className="form" encType="multipart/form-data">
+        <label className='label'>
+          <span>Имя</span>
+          <input type="text" name="name" placeholder='Заполните имя' />
+        </label>
+        <label className='label'>
+          <span>Имя</span>
+          <input type="text" name="name" placeholder='Заполните имя' />
+        </label>
+        <label className='label'>
+          <span>Имя</span>
+          <input type="text" name="name" placeholder='Заполните имя' />
+        </label>
+        <label className='label'>
+          <span>Имя</span>
+          <input type="text" name="name" placeholder='Заполните имя' />
+        </label>
+        <label className='label'>
+          <span>Имя</span>
+          <input type="text" name="name" placeholder='Заполните имя' />
+        </label>
+        <label className='label'>
+          <span>Имя</span>
+          <input type="text" name="name" placeholder='Заполните имя' />
+        </label>
+        <label className='label'>
+          <span>Имя</span>
+          <input type="text" name="name" placeholder='Заполните имя' />
+        </label>
+        <label className='label'>
+          <span>Имя</span>
+          <input type="text" name="name" placeholder='Заполните имя' />
+        </label>
+        <label className='label'>
+          <span>Имя</span>
+          <input type="text" name="name" placeholder='Заполните имя' />
+        </label>
+        <label className='label'>
+          <span>Имя</span>
+          <input type="text" name="name" placeholder='Заполните имя' />
+        </label>
+        <label className='label'>
+          <span>Имя</span>
+          <input type="text" name="name" placeholder='Заполните имя' />
+        </label>
+        <label className='label'>
+          <span>Имя</span>
+          <input type="text" name="name" placeholder='Заполните имя' />
+        </label>
+
+        <label className='label'>
+          <span>Имя</span>
+          <input type="text" name="name" placeholder='Заполните имя' />
+        </label>
         <label className='label'>
           <span>Имя</span>
           <input type="text" name="name" placeholder='Заполните имя' />
