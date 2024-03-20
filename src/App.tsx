@@ -13,7 +13,7 @@ function App() {
   }, [])
 
   const onClose = () => {
-    tg.close;
+    tg.close();
   }
 
   return (
