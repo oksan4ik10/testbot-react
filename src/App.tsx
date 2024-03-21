@@ -91,31 +91,6 @@ function App() {
           <span>Имя</span>
           <input type="text" name="name" placeholder='Заполните имя' />
         </label>
-        <label className='label'>
-          <span>Имя</span>
-          <input type="text" name="name" placeholder='Заполните имя' />
-        </label>
-        <label className='label'>
-          <span>Имя</span>
-          <input type="text" name="name" placeholder='Заполните имя' />
-        </label>
-        <label className='label'>
-          <span>Имя</span>
-          <input type="text" name="name" placeholder='Заполните имя' />
-        </label>
-        <label className='label'>
-          <span>Имя</span>
-          <input type="text" name="name" placeholder='Заполните имя' />
-        </label>
-
-        <label className='label'>
-          <span>Имя</span>
-          <input type="text" name="name" placeholder='Заполните имя' />
-        </label>
-        <label className='label'>
-          <span>Имя</span>
-          <input type="text" name="name" placeholder='Заполните имя' />
-        </label>
 
 
         <label className='label form__addFile'>
@@ -127,7 +102,7 @@ function App() {
 
         </label>
 
-        {(uploadFiles.length > 1) && uploadFiles.map((item, index) => {
+        {(uploadFiles.length !== 0) && uploadFiles.map((item, index) => {
           return <label key={index}>
             <div className="wrapImg">
               <img src={item} alt="" />
@@ -137,7 +112,7 @@ function App() {
 
 
 
-        <button onClick={onClose}>Сохранить</button>
+        <input type='submiy' onClick={onClose} className='button' defaultValue={"Сохранить"}></input>
       </form>
 
     </>

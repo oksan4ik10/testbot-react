@@ -24,6 +24,7 @@
   padding: 10px;
   font-size: 1em;
   flex: 1 0 auto;
+  line-height: 2rem;
 }
 
 .label input[type="text"]:focus {
@@ -31,7 +32,7 @@
   outline: none;
 }
 
-.form button {
+.form .button {
   padding: 10px;
   outline: none;
   border: none;
@@ -39,6 +40,8 @@
   font-family: inherit;
   border-radius: 5px;
   color: var(--tg-theme-button-text-color);
+  text-align: center;
+  margin-top: 10px;
 }
 
 .wrapImg {
@@ -59,4 +62,5 @@
   opacity: 0;
   display: none;
   flex-basis: 0px;
+
 }
