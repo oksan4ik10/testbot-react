@@ -98,11 +98,11 @@ function App() {
             <span>Файлы</span>
             <img src={urlFileImg} alt="addFile" />
           </div>
-          <input ref={inputFiles} accept="image/png, image/jpeg" type="file" multiple id="files" onChange={filesChange} />
+          <input ref={inputFiles} accept="image/png, image/jpeg" type="file" multiple={true} id="files" onChange={filesChange} />
 
         </label>
 
-        <input accept="image/png, image/jpeg" type="file" multiple={true} id="files" />
+        {/* <input accept="image/png, image/jpeg" multiple={true} type="file" id="files" /> */}
 
         {(uploadFiles.length !== 0) && uploadFiles.map((item, index) => {
           return <label key={index}>
