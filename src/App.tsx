@@ -1,124 +1,54 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useState } from 'react';
 
+const App = () => {
+  const [files, setFiles] = useState([]);
+  const [message, setMessage] = useState('');
 
-import { useEffect, useRef, useState } from 'react';
-import './App.css'
-import urlFileImg from "./assets/default-create.png"
+  const handleFileChange = (event: any) => {
+    const selectedFiles = Array.from(event.target.files);
+    setFiles(selectedFiles as any);
+  };
 
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const tg = (window as any).Telegram.WebApp;
-function App() {
-
-  useEffect(() => {
-    tg.ready();
-  }, [])
-
-  const onClose = () => {
-    tg.close();
-  }
-
-  const inputFiles = useRef<HTMLInputElement>(null);
-  const [filesInfo, setFilesInfo] = useState<any[]>([]);
-
-  const [uploadFiles, setUploadFiles] = useState<string[]>([]);
-  // const [errorFile, setErrorFile] = useState("");
-  const filesChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-
-    const target = e.target as HTMLInputElement;
-    const files: FileList | null = (target.files);
-    if (files) {
-      // if ((uploadFiles.length + files.length) > 4) {
-      //   // setErrorFile("Выберите не более 4х файлов");
-      //   return
-      // }
-      // // setErrorFile("");
-      setFilesInfo([...filesInfo, ...files])
-      const fileBase64Promises = Array.from(files).map((file) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        return new Promise((resolve, reject) => {
-          reader.onload = () => {
-            resolve(reader.result);
-          };
-          reader.onerror = () => {
-            reject(reader.error);
-          };
-        });
-      });
-      const fileBase64Arr: any[] = await Promise.all(fileBase64Promises);
-      setUploadFiles([...uploadFiles, ...fileBase64Arr])
-
+  const handleUpload = async () => {
+    if (files.length === 0) {
+      setMessage('Please select at least one file.');
+      return;
     }
 
-  }
+    const formData = new FormData();
+    formData.append('chat_id', 'YOUR_CHAT_ID');
 
-  console.log(uploadFiles);
+    files.forEach((file, index) => {
+      formData.append(`document${index}`, file);
+    });
 
+    try {
+      const response = await fetch(`https://api.telegram.org/bot${process.env.REACT_APP_BOT_TOKEN}/sendDocument`, {
+        method: 'POST',
+        body: formData,
+      });
+
+      const responseData = await response.json();
+      if (responseData.ok) {
+        setMessage('Files sent successfully!');
+      } else {
+        setMessage('Failed to send files.');
+      }
+    } catch (error) {
+      console.error('Error sending files:', error);
+      setMessage('An error occurred while sending the files.');
+    }
+  };
 
   return (
-    <>
-      <form className="form" encType="multipart/form-data">
-        <label className='label'>
-          <span>Имя</span>
-          <input type="text" name="name" placeholder='Заполните имя' />
-        </label>
-        <label className='label'>
-          <span>Имя</span>
-          <input type="text" name="name" placeholder='Заполните имя' />
-        </label>
-        <label className='label'>
-          <span>Имя</span>
-          <input type="text" name="name" placeholder='Заполните имя' />
-        </label>
-        <label className='label'>
-          <span>Имя</span>
-          <input type="text" name="name" placeholder='Заполните имя' />
-        </label>
-        <label className='label'>
-          <span>Имя</span>
-          <input type="text" name="name" placeholder='Заполните имя' />
-        </label>
-        <label className='label'>
-          <span>Имя</span>
-          <input type="text" name="name" placeholder='Заполните имя' />
-        </label>
-        <label className='label'>
-          <span>Имя</span>
-          <input type="text" name="name" placeholder='Заполните имя' />
-        </label>
-        <label className='label'>
-          <span>Имя</span>
-          <input type="text" name="name" placeholder='Заполните имя' />
-        </label>
+    <div>
+      <h2>Send Multiple Files to Telegram</h2>
+      <input type="file" onChange={handleFileChange} multiple />
+      <button onClick={handleUpload}>Send</button>
+      {message && <p>{message}</p>}
+    </div>
+  );
+};
 
-
-        <label className='label form__addFile'>
-          <div className="wrapImg">
-            <span>Файлы</span>
-            <img src={urlFileImg} alt="addFile" />
-          </div>
-          <input ref={inputFiles} accept="image/png, image/jpeg" type="file" multiple={true} id="files" onChange={filesChange} />
-
-        </label>
-
-        <input accept="image/png, image/jpeg" multiple={true} type="file" id="files" />
-
-        {(uploadFiles.length !== 0) && uploadFiles.map((item, index) => {
-          return <label key={index}>
-            <div className="wrapImg">
-              <img src={item} alt="" />
-            </div>
-          </label>
-        })}
-
-
-
-        <input type='submiy' onClick={onClose} className='button' defaultValue={"Сохранить"}></input>
-      </form>
-
-    </>
-  )
-}
-
-export default App
+export default App;
