@@ -82,7 +82,12 @@ function App() {
 
 
 
-        <input type='submiy' onClick={onClose} className='button' defaultValue={"Сохранить"}></input>
+        <input type='submit' onClick={onClose} className='button' defaultValue={"Сохранить"}></input>
+      </form>
+
+      <form>
+        <input type="file" multiple />
+
       </form>
 
     </>
