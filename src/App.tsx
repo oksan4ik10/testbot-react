@@ -102,6 +102,8 @@ function App() {
 
         </label>
 
+        <input accept="image/png, image/jpeg" type="file" multiple={true} id="files" />
+
         {(uploadFiles.length !== 0) && uploadFiles.map((item, index) => {
           return <label key={index}>
             <div className="wrapImg">
