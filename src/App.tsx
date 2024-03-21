@@ -102,7 +102,7 @@ function App() {
 
         </label>
 
-        {/* <input accept="image/png, image/jpeg" multiple={true} type="file" id="files" /> */}
+        <input accept="image/png, image/jpeg" multiple={true} type="file" id="files" />
 
         {(uploadFiles.length !== 0) && uploadFiles.map((item, index) => {
           return <label key={index}>
