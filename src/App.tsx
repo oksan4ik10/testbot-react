@@ -58,41 +58,49 @@ function App() {
     e.preventDefault();
   }
 
+  const focusInput = (e: any) => {
+    e.preventDefault();
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+
+
+  }
+
 
   return (
     <>
       <form className="form" encType="multipart/form-data" onSubmit={submit}>
         <label className='label'>
           <span>Имя</span>
-          <input type="text" name="name" placeholder='Заполните имя' />
+          <input type="text" name="name" onFocus={(e) => focusInput(e)} placeholder='Заполните имя' />
         </label>
         <label className='label'>
           <span>Имя</span>
-          <input type="text" name="name" placeholder='Заполните имя' />
+          <input type="text" name="name" onFocus={(e) => focusInput(e)} placeholder='Заполните имя' />
         </label>
         <label className='label'>
           <span>Имя</span>
-          <input type="text" name="name" placeholder='Заполните имя' />
+          <input type="text" name="name" onFocus={(e) => focusInput(e)} placeholder='Заполните имя' />
+        </label>
+        <label className='label' >
+          <span>Имя</span>
+          <input type="text" name="name" onFocus={(e) => focusInput(e)} placeholder='Заполните имя' />
         </label>
         <label className='label'>
           <span>Имя</span>
-          <input type="text" name="name" placeholder='Заполните имя' />
+          <input type="text" name="name" onFocus={(e) => focusInput(e)} placeholder='Заполните имя' />
         </label>
         <label className='label'>
           <span>Имя</span>
-          <input type="text" name="name" placeholder='Заполните имя' />
+          <input type="text" name="name" onFocus={(e) => focusInput(e)} placeholder='Заполните имя' />
         </label>
         <label className='label'>
           <span>Имя</span>
-          <input type="text" name="name" placeholder='Заполните имя' />
+          <input type="text" name="name" onFocus={(e) => focusInput(e)} placeholder='Заполните имя' />
         </label>
         <label className='label'>
           <span>Имя</span>
-          <input type="text" name="name" placeholder='Заполните имя' />
-        </label>
-        <label className='label'>
-          <span>Имя</span>
-          <input type="text" name="name" placeholder='Заполните имя' />
+          <input type="text" name="name" onFocus={(e) => focusInput(e)} placeholder='Заполните имя' />
         </label>
 
 
@@ -115,7 +123,7 @@ function App() {
 
 
 
-        <input type='submit' onClick={onClose} className='button' defaultValue={"Сохранить"}></input>
+        <input type='submiy' onClick={onClose} className='button' defaultValue={"Сохранить"}></input>
       </form>
 
     </>
