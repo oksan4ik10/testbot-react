@@ -54,11 +54,14 @@ function App() {
   }
 
   console.log(uploadFiles);
+  const submit = (e: any) => {
+    e.preventDefault();
+  }
 
 
   return (
     <>
-      <form className="form" encType="multipart/form-data">
+      <form className="form" encType="multipart/form-data" onSubmit={submit}>
         <label className='label'>
           <span>Имя</span>
           <input type="text" name="name" placeholder='Заполните имя' />
@@ -101,7 +104,6 @@ function App() {
           <input ref={inputFiles} accept="image/png, image/jpeg" type="file" multiple id="files" onChange={filesChange} />
 
         </label>
-
 
         {(uploadFiles.length !== 0) && uploadFiles.map((item, index) => {
           return <label key={index}>
