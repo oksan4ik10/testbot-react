@@ -57,13 +57,13 @@ function App() {
     e.preventDefault();
     tg.close();
   }
-  const focusForm = (e: React.FocusEvent<HTMLFormElement>) => {
+  const focusForm = (e: React.FocusEvent<HTMLInputElement>) => {
     e.preventDefault();
     const target = e.target as HTMLElement;
     if (target) {
 
       const topOffset = 10;
-      const elementPosition = target.getBoundingClientRect().top;
+      const elementPosition = target.getBoundingClientRect().top <= 10 ? 0 : target.getBoundingClientRect().top;
       const offsetPosition = elementPosition - topOffset;
       window.scrollBy({
         top: offsetPosition,
@@ -77,38 +77,38 @@ function App() {
 
   return (
     <>
-      <form className="form" encType="multipart/form-data" onSubmit={submit} onFocus={(e) => focusForm(e)}>
+      <form className="form" encType="multipart/form-data" onSubmit={submit} >
         <label className='label'>
           <span>Имя</span>
-          <input type="text" name="name" placeholder='Заполните имя' />
+          <input type="text" name="name" placeholder='Заполните имя' onFocus={(e) => focusForm(e)} />
         </label>
         <label className='label'>
           <span>Имя</span>
-          <input type="text" name="name" placeholder='Заполните имя' />
+          <input type="text" name="name" placeholder='Заполните имя' onFocus={(e) => focusForm(e)} />
         </label>
         <label className='label'>
           <span>Имя</span>
-          <input type="text" name="name" placeholder='Заполните имя' />
+          <input type="text" name="name" placeholder='Заполните имя' onFocus={(e) => focusForm(e)} />
         </label>
         <label className='label' >
           <span>Имя</span>
-          <input type="text" name="name" placeholder='Заполните имя' />
+          <input type="text" name="name" placeholder='Заполните имя' onFocus={(e) => focusForm(e)} />
         </label>
         <label className='label'>
           <span>Имя</span>
-          <input type="text" name="name" placeholder='Заполните имя' />
+          <input type="text" name="name" placeholder='Заполните имя' onFocus={(e) => focusForm(e)} />
         </label>
         <label className='label'>
           <span>Имя</span>
-          <input type="text" name="name" placeholder='Заполните имя' />
+          <input type="text" name="name" placeholder='Заполните имя' onFocus={(e) => focusForm(e)} />
         </label>
         <label className='label'>
           <span>Имя</span>
-          <input type="text" name="name" placeholder='Заполните имя' />
+          <input type="text" name="name" placeholder='Заполните имя' onFocus={(e) => focusForm(e)} />
         </label>
         <label className='label'>
           <span>Имя</span>
-          <input type="text" name="name" placeholder='Заполните имя' />
+          <input type="text" name="name" placeholder='Заполните имя' onFocus={(e) => focusForm(e)} />
         </label>
 
 
