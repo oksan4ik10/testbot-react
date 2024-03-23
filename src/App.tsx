@@ -14,9 +14,9 @@ function App() {
     tg.ready();
   }, [])
 
-  const onClose = () => {
-    tg.close();
-  }
+  // const onClose = () => {
+  //   tg.close();
+  // }
 
   const inputFiles = useRef<HTMLInputElement>(null);
   const [filesInfo, setFilesInfo] = useState<any[]>([]);
@@ -53,54 +53,62 @@ function App() {
 
   }
 
-  console.log(uploadFiles);
   const submit = (e: any) => {
     e.preventDefault();
+    tg.close();
   }
-
-  const focusInput = (e: any) => {
+  const focusForm = (e: React.FocusEvent<HTMLFormElement>) => {
     e.preventDefault();
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    const target = e.target as HTMLElement;
+    if (target) {
 
+      const topOffset = 10;
+      const elementPosition = target.getBoundingClientRect().top;
+      const offsetPosition = elementPosition - topOffset;
+      window.scrollBy({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
 
   }
+
 
 
   return (
     <>
-      <form className="form" encType="multipart/form-data" onSubmit={submit}>
+      <form className="form" encType="multipart/form-data" onSubmit={submit} onFocus={(e) => focusForm(e)}>
         <label className='label'>
           <span>Имя</span>
-          <input type="text" name="name" onFocus={(e) => focusInput(e)} placeholder='Заполните имя' />
+          <input type="text" name="name" placeholder='Заполните имя' />
         </label>
         <label className='label'>
           <span>Имя</span>
-          <input type="text" name="name" onFocus={(e) => focusInput(e)} placeholder='Заполните имя' />
+          <input type="text" name="name" placeholder='Заполните имя' />
         </label>
         <label className='label'>
           <span>Имя</span>
-          <input type="text" name="name" onFocus={(e) => focusInput(e)} placeholder='Заполните имя' />
+          <input type="text" name="name" placeholder='Заполните имя' />
         </label>
         <label className='label' >
           <span>Имя</span>
-          <input type="text" name="name" onFocus={(e) => focusInput(e)} placeholder='Заполните имя' />
+          <input type="text" name="name" placeholder='Заполните имя' />
         </label>
         <label className='label'>
           <span>Имя</span>
-          <input type="text" name="name" onFocus={(e) => focusInput(e)} placeholder='Заполните имя' />
+          <input type="text" name="name" placeholder='Заполните имя' />
         </label>
         <label className='label'>
           <span>Имя</span>
-          <input type="text" name="name" onFocus={(e) => focusInput(e)} placeholder='Заполните имя' />
+          <input type="text" name="name" placeholder='Заполните имя' />
         </label>
         <label className='label'>
           <span>Имя</span>
-          <input type="text" name="name" onFocus={(e) => focusInput(e)} placeholder='Заполните имя' />
+          <input type="text" name="name" placeholder='Заполните имя' />
         </label>
         <label className='label'>
           <span>Имя</span>
-          <input type="text" name="name" onFocus={(e) => focusInput(e)} placeholder='Заполните имя' />
+          <input type="text" name="name" placeholder='Заполните имя' />
         </label>
 
 
@@ -123,7 +131,7 @@ function App() {
 
 
 
-        <input type='submiy' onClick={onClose} className='button' defaultValue={"Сохранить"}></input>
+        <input type='submit' className='button' defaultValue={"Сохранить"}></input>
       </form>
 
     </>
